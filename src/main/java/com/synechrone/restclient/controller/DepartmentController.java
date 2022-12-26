@@ -20,7 +20,13 @@ public class DepartmentController {
 	 
 	@Autowired
     private DepartmentService departmentService;
-
+	
+@GetMapping("healthcheck")
+public ResponseEntity<Department> getHealthCheck() {
+		Department department = new Department();
+		department.setDepartmentName("healthcheck ok");
+		return ResponseEntity.ok(department);
+	}
 	
     @PostMapping("/")
     public ResponseEntity<Department> saveDepartment(@RequestBody Department department){
